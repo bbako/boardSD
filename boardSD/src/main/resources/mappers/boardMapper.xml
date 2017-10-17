@@ -7,12 +7,8 @@
 
 <mapper namespace="org.board.persistence.BoardDAO" >
 
-<insert id="create" parameterType="org.board.domain.BoardVO">
-insert into s_board(BOARD_TITLE,BOARD_CONTENT,BOARD_WRITER,BOARD_DATETIME,BOARD_VIEWCOUNTER) values(#{BOARD_TITLE},#{BOARD_CONTENT},#{BOARD_WRITER},sysdate(),0)
-</insert>
-
-
-
-
+<select id="listAll" resultType="org.board.domain.BoardVO">
+	SELECT * FROM s_board 
+</select>
 
 </mapper>

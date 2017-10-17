@@ -5,10 +5,9 @@ import java.util.Date;
 public class BoardVO {
 	
 	int seq_id ;
-	String BOARD_TITLE ,	BOARD_CONTENT ,	BOARD_WRITER ;
-	Date BOARD_DATETIME;
-	int BOARD_VIEWCOUNTER;
-	
+	String board_title ,	board_content ,	board_writer ;
+	Date board_datetime;
+	int board_viewcounter;
 	
 	public int getSeq_id() {
 		return seq_id;
@@ -16,44 +15,36 @@ public class BoardVO {
 	public void setSeq_id(int seq_id) {
 		this.seq_id = seq_id;
 	}
-	public String getBOARD_TITLE() {
-		return BOARD_TITLE;
+	public String getBoard_title() {
+		return board_title;
 	}
-	public void setBOARD_TITLE(String bOARD_TITLE) {
-		BOARD_TITLE = bOARD_TITLE;
+	public void setBoard_title(String board_title) {
+		this.board_title = board_title;
 	}
-	public String getBOARD_CONTENT() {
-		return BOARD_CONTENT;
+	public String getBoard_content() {
+		return board_content;
 	}
-	public void setBOARD_CONTENT(String bOARD_CONTENT) {
-		BOARD_CONTENT = bOARD_CONTENT;
+	public void setBoard_content(String board_content) {
+		this.board_content = board_content;
 	}
-	public String getBOARD_WRITER() {
-		return BOARD_WRITER;
+	public String getBoard_writer() {
+		return board_writer;
 	}
-	public void setBOARD_WRITER(String bOARD_WRITER) {
-		BOARD_WRITER = bOARD_WRITER;
+	public void setBoard_writer(String board_writer) {
+		this.board_writer = board_writer;
 	}
-	public Date getBOARD_DATETIME() {
-		return BOARD_DATETIME;
+	public Date getBoard_datetime() {
+		return board_datetime;
 	}
-	public void setBOARD_DATETIME(Date bOARD_DATETIME) {
-		BOARD_DATETIME = bOARD_DATETIME;
+	public void setBoard_datetime(Date board_datetime) {
+		this.board_datetime = board_datetime;
 	}
-	public int getBOARD_VIEWCOUNTER() {
-		return BOARD_VIEWCOUNTER;
+	public int getBoard_viewcounter() {
+		return board_viewcounter;
 	}
-	public void setBOARD_VIEWCOUNTER(int bOARD_VIEWCOUNTER) {
-		BOARD_VIEWCOUNTER = bOARD_VIEWCOUNTER;
+	public void setBoard_viewcounter(int board_viewcounter) {
+		this.board_viewcounter = board_viewcounter;
 	}
-	
-	@Override
-	public String toString() {
-		return "BoardVO [seq_id=" + seq_id + ", BOARD_TITLE=" + BOARD_TITLE + ", BOARD_CONTENT=" + BOARD_CONTENT
-				+ ", BOARD_WRITER=" + BOARD_WRITER + ", BOARD_DATETIME=" + BOARD_DATETIME + ", BOARD_VIEWCOUNTER="
-				+ BOARD_VIEWCOUNTER + "]";
-	}
-	
 	
 	
 	
