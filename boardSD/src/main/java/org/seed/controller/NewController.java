@@ -29,7 +29,6 @@ public class NewController {
 	@PostMapping	 
 	public void newPost(@RequestParam String board_title, @RequestParam String board_content, @RequestParam String board_writer) {
 		System.out.println("new post");
-		System.out.println(board_title);
 		
 		BoardVO vo = new BoardVO();
 				
@@ -39,7 +38,6 @@ public class NewController {
 		
 		ser.create(vo);
 		
-			
 	}
 
 }

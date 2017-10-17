@@ -12,4 +12,6 @@ values(#{board_title},#{board_content},#{board_writer},sysdate(),0);
 </insert>
 
 
+
+
 </mapper>

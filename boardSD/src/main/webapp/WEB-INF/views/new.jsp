@@ -61,7 +61,8 @@ $(document).ready(function(e) {
             board_writer:writer
 			},           
            success: function(){
-               alert("Á¤¼Û µÊ");               
+               alert("Á¤¼Û µÊ");   
+               
            }
 		 
 		});
