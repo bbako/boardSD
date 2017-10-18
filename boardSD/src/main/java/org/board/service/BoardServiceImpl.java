@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.board.domain.BoardVO;
+import org.board.domain.Criteria;
 import org.board.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +22,15 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> listAll() throws Exception {
-		return dao.listAll();
+	public int total() {
+		return dao.total();	
 	}
+
+	@Override
+	public List<BoardVO> listAll(int page ) {
+		return dao.listAll(page);
+	}
+
 
 
 }

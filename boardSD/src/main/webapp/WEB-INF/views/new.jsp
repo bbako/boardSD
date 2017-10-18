@@ -38,7 +38,7 @@
 		  </div>
 		  
 		  <button  id="submit" class="btn btn-primary">Submit</button>
-		  <button id="cancel" class="btn btn-primary">Cancel</button>
+		  <a href="board_list.do" class="btn btn-primary" >Cancel</a>
 		</form>
 
 
@@ -85,7 +85,7 @@ $(document).ready(function(e) {
            success: function(){
                alert("Á¤¼Û µÊ");  
                
-               location.href = "/";
+               location.href = "/board_list.do";
 
 
            }

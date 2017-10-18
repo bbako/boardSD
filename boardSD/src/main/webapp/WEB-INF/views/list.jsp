@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<title>Seed - Board List</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  
 </head>
 <body>
 ${pageMaker}
-${list}
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -42,16 +42,8 @@ ${list}
 				<th class="col-md-1 text-center">Views</th>
 			</tr>
 		</thead>
-		<tbody>
-			<c:forEach var="list" items="${list}">
-			<tr id="list">
-				<td class="text-center">${list.seq_id}</td>
-				<td class="text-center">${list.board_title}</td>
-				<td class="text-center">${list.board_writer}</td>
-				<td class="text-center">${list.board_datetime}</td>
-				<td class="text-center">${list.board_viewcounter}</td>
-			</tr>
-			</c:forEach>
+		<tbody id="showlist">
+			
 		</tbody>
 	</table>
 	
@@ -71,48 +63,68 @@ ${list}
 	
 	 <a href="/new" class="btn btn-primary" >글쓰기</a>
 </div>
-
-<script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
-  
- <script>
-  
-  $(document).ready(function(e) {
-  
-  	$(".a1").on('click',function(e){
-		e.preventDefault();
-		
-		console.log("pagenation");
-		
-		console.dir(this.innerText);
-		
-		var page = this.innerText;
-		
-		$.ajax({
-	           type: "get",
-	           url: "/board_list.do",
-	           dataType:'Json',
-	           data: { 
-	            page: page
-				},           
-	           success: function(data){
-	        	   console.log(data);
-	               
-
-	           }
-			 
-			});
-		
+<script>
+$(document).ready(function(e) {
 	
-	})
-  
-  
-  
-  })
-  
-  </script>
+	var page = 1;
+	
+	function adlist(list){
+		 
+		 var str="";
+		
+		 
+		 $.each(list, function(index, value) {
+			 
+			 console.log(value.seq_id);
+			 console.dir($("#showlist"));
+
+			 
+			 str+='<tr><td class="text-center">'+value.seq_id+'</td>'
+			 		+'<td class="text-center">'+value.board_title+'</td>'
+					+'<td class="text-center">'+value.board_writer+'</td>'
+					+'<td class="text-center">'+value.board_datetime+'</td>'
+					+'<td class="text-center">'+value.board_viewcounter+'</td></tr>'
+					
+			 
+			}); 
+		 
+		 
+		 	$("#showlist").html(str);
+		 	
+			 
+		 
+	}
+	
+	init_list();
+	
+	function init_list(){
+		
+		
+		 $.ajax({
+			  type: "POST",
+	    	  url: "/list",
+	 		  dataType: 'Json',
+	 		  data : {
+	 			 	
+		        	page : page
+		        	
+		        },
+	    	  success: function(re){
+	    		console.log("리스트를 받아서 ");
+	    		console.log(re);
+	    		console.log($("#showlist"))
+	    		
+	    			adlist(re);
+	    		
+	    	  } 
+               
+		 });
+	}
+	
+})
+
+
+</script>
 
 </body>
 </html>

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.board.domain.BoardVO;
+import org.board.domain.Criteria;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -23,8 +24,18 @@ public class BoardDAOImpl implements BoardDAO {
 
 
 	@Override
-	public List<BoardVO> listAll() {
-		return sess.selectList(namespace + ".listAll");
+	public List<BoardVO> listAll(int page) {
+		
+		
+		return sess.selectList(namespace + ".listAll", page);
+	}
+
+
+	@Override
+	public int total() {
+		
+		return sess.selectOne(namespace+".total");
+		
 	}
 
 }

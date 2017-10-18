@@ -31,13 +31,18 @@ public class dbtest {
 		
 		BoardVO vo = new BoardVO();
 		
-		vo.setBoard_title("title122_s_dao");
-		vo.setBoard_content("bOARD_CONTENT122_s_dao");
-		vo.setBoard_writer("bOARD_WRITER22_s_dao");
+		for (int i = 0; i <105; i++) {
+			
+			vo.setBoard_title("title"+i);
+			vo.setBoard_content("content"+i);
+			vo.setBoard_writer("writer"+i);
+			
 		
-		System.out.println(vo.toString());
-	
-		dao.create(vo);
+			dao.create(vo);
+			
+		}
+		
+		
 		
 		}
 	

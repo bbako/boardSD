@@ -6,14 +6,21 @@
   
 <mapper namespace="org.board.persistence.BoardDAO" >
 
-<select id="listAll" resultType="org.board.domain.BoardVO">
-	SELECT * FROM s_board 
+<select id="listAll" resultType="org.board.domain.BoardVO" parameterType="int">
+	<![CDATA[ select * from s_board where SEQ_ID>0 order by SEQ_ID desc limit #{page},10]]>
+
 </select>
+
+
 
 <insert id="create" parameterType="org.board.domain.BoardVO">
 insert into s_board(BOARD_TITLE,BOARD_CONTENT,BOARD_WRITER,BOARD_DATETIME,BOARD_VIEWCOUNTER) 
-values(#{board_title},#{board_content},#{board_writer},sysdate(),0);
+values(#{board_title},#{board_content},#{board_writer},sysdate(),0)
 </insert>
+
+<select id="total" resultType="int">
+select count(*) from s_board 
+</select>
 
 
 </mapper>

@@ -45,6 +45,12 @@ public class BoardVO {
 	public void setBoard_viewcounter(int board_viewcounter) {
 		this.board_viewcounter = board_viewcounter;
 	}
+	@Override
+	public String toString() {
+		return "BoardVO [seq_id=" + seq_id + ", board_title=" + board_title + ", board_content=" + board_content
+				+ ", board_writer=" + board_writer + ", board_datetime=" + board_datetime + ", board_viewcounter="
+				+ board_viewcounter + "]";
+	}
 	
 
 
