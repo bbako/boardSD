@@ -6,12 +6,15 @@ import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
 import org.board.domain.BoardVO;
+import org.board.domain.Criteria;
+import org.board.domain.PageMaker;
 import org.board.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -43,7 +46,17 @@ public class BoardController {
 	}*/
 	
 	@GetMapping("/list")
-	public void listGet(){
+	public ModelAndView listGet(Criteria cri){
+		
+		System.out.println("main get");
+		
+		System.out.println(cri);
+        ModelAndView mv = new ModelAndView();
+
+		int total=boardService.total();
+		mv.addObject("pageMaker", new PageMaker(cri, total));
+
+        return mv; 
 		
 	}
 	
