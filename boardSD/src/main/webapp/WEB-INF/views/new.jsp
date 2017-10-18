@@ -85,7 +85,9 @@ $(document).ready(function(e) {
            success: function(){
                alert("Á¤¼Û µÊ");  
                
-               
+               location.href = "/";
+
+
            }
 		 
 		});

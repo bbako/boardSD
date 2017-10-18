@@ -1,5 +1,7 @@
 package org.board.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,6 +19,12 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void create(BoardVO vo) {
 			sess.insert(namespace+".create", vo);
+	}
+
+
+	@Override
+	public List<BoardVO> listAll() {
+		return sess.selectList(namespace + ".listAll");
 	}
 
 }

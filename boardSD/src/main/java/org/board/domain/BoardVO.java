@@ -5,10 +5,9 @@ import java.util.Date;
 public class BoardVO {
 	
 	int seq_id ;
-	String board_title , board_content ,	board_writer ;
+	String board_title ,	board_content ,	board_writer ;
 	Date board_datetime;
 	int board_viewcounter;
-	
 	
 	public int getSeq_id() {
 		return seq_id;
@@ -47,14 +46,6 @@ public class BoardVO {
 		this.board_viewcounter = board_viewcounter;
 	}
 	
-	@Override
-	public String toString() {
-		return "BoardVO [seq_id=" + seq_id + ", board_title=" + board_title + ", board_content=" + board_content
-				+ ", board_writer=" + board_writer + ", board_datetime=" + board_datetime + ", board_viewcounter="
-				+ board_viewcounter + "]";
-	}
-	
 
-	
 
 }
