@@ -2,8 +2,10 @@ package org.seed.controller;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.board.domain.BoardVO;
+import org.board.persistence.BoardDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -17,18 +19,26 @@ public class dbtest {
 
 	
 	@Inject
-	SqlSessionTemplate sess;
+	SqlSession sess;
+	
+	@Inject
+	BoardDAO dao;
 		
+
+	
 	@Test
-	public void qInsertTest(){
+	public void daoInsertTest(){
 		
 		BoardVO vo = new BoardVO();
 		
-		vo.setBOARD_TITLE("title122");
-		vo.setBOARD_CONTENT("bOARD_CONTENT122");
-		vo.setBOARD_WRITER("bOARD_WRITER22");
+		vo.setBoard_title("title122_s_dao");
+		vo.setBoard_content("bOARD_CONTENT122_s_dao");
+		vo.setBoard_writer("bOARD_WRITER22_s_dao");
+		
+		System.out.println(vo.toString());
 	
-		sess.insert("org.board.persistence.BoardDAO.create",vo);
+		dao.create(vo);
+		
 		}
 	
 	

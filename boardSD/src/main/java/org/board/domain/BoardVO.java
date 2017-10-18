@@ -46,7 +46,6 @@ public class BoardVO {
 		this.board_viewcounter = board_viewcounter;
 	}
 	
-	
-	
+
 
 }

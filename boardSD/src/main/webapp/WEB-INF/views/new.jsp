@@ -53,12 +53,12 @@ $(document).ready(function(e) {
 		 console.log(writer);
 		 
 		 $.ajax({
-           type: "POST",
+           type: "post",
            url: "/new",
            data: { 
-            title: title,
-			content: content, 
-			writer:writer
+            board_title: title,
+            board_content: content, 
+            board_writer:writer
 			},           
            success: function(){
                alert("Á¤¼Û µÊ");               

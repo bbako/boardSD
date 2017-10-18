@@ -18,7 +18,7 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	@Override
 	public void create(BoardVO vo) {
-			sess.insert(namespace+".create");
+			sess.insert(namespace+".create", vo);
 	}
 
 
