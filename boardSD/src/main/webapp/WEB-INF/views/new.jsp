@@ -5,32 +5,54 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">제 목</label>
-    <input type="text" class="form-control" id="title" placeholder="title">
-  </div>
+
+<div class="container">
+  <div class="panel-group">
   
-  <div class="form-group">
-    <label for="exampleTextarea">내 용</label>
-    <textarea class="form-control" id="content" rows="5">content</textarea>
-  </div>
+
   
-  <div class="form-group">
-    <label for="exampleInputEmail1">글쓴이</label>
-    <input type="text" class="form-control" id="writer" placeholder="writer">
-  </div>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">새글쓰기</div>
+      <div class="panel-body">
+      
+      <form>
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">제 목</label>
+		    <input type="text" class="form-control" id="title" placeholder="title">
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="exampleTextarea">내 용</label>
+		    <textarea class="form-control" id="content" rows="5">content</textarea>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">글쓴이</label>
+		    <input type="text" class="form-control" id="writer" placeholder="writer">
+		  </div>
+		  
+		  <button  id="submit" class="btn btn-primary">Submit</button>
+		  <button id="cancel" class="btn btn-primary">Cancel</button>
+		</form>
+
+
+
+
+	</div>
+    </div>
+
   
-  <button  id="submit" class="btn btn-primary">Submit</button>
-  <button id="cancel" class="btn btn-primary">Cancel</button>
-</form>
+  </div>
+</div>
+
+
+
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
@@ -61,7 +83,8 @@ $(document).ready(function(e) {
             board_writer:writer
 			},           
            success: function(){
-               alert("정송 됨");   
+               alert("정송 됨");  
+               
                
            }
 		 
