@@ -31,11 +31,11 @@
 </div>
 
 <div class="container">       
-	<table class="table table-condensed">
+	<table class="table">
 		<thead>
 			<tr>
 				<th class="col-md-1 text-center">No</th>
-				<th class="col-md-5 text-center">Title</th>
+				<th class="col-md-5 text-left">Title</th>
 				<th class="col-md-2 text-center">Writer</th>
 				<th class="col-md-2 text-center">Date</th>
 				<th class="col-md-1 text-center">Views</th>
