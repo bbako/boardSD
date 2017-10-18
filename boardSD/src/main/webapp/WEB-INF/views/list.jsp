@@ -53,8 +53,8 @@ ${pageMaker}
                      <li class="paginate_button" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
                      <c:if test="${pageMaker.prev}"><a class="a1" href="${pageMaker.start-1}">&laquo;</a></c:if></li>
                      <c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" var="pagege">
-                     <a class="a1" href="${pagege}">
-         	<li class="${pageMaker.current ==pagege?'active':''}" aria-controls="dataTables-example" tabindex="0">${pagege}</a></li>
+                    
+         	<li id="active" class="${pageMaker.current ==pagege?'active':''}" aria-controls="dataTables-example" tabindex="0"> <a class="a1" href="${pagege}">${pagege}</a></li>
          	</c:forEach> 
                      <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next">
                      <c:if test="${pageMaker.next}"><a class="a1" href="${pageMaker.end+1}">&raquo;</a></c:if></li>
@@ -71,13 +71,8 @@ $(document).ready(function(e) {
 	function adlist(list){
 		 
 		 var str="";
-		
 		 
 		 $.each(list, function(index, value) {
-			 
-			 console.log(value.seq_id);
-			 console.dir($("#showlist"));
-
 			 
 			 str+='<tr><td class="text-center">'+value.seq_id+'</td>'
 			 		+'<td class="text-center">'+value.board_title+'</td>'
@@ -85,22 +80,17 @@ $(document).ready(function(e) {
 					+'<td class="text-center">'+value.board_datetime+'</td>'
 					+'<td class="text-center">'+value.board_viewcounter+'</td></tr>'
 					
-			 
 			}); 
-		 
 		 
 		 	$("#showlist").html(str);
 		 	
-			 
-		 
 	}
 	
-	init_list();
-	
-	function init_list(){
+	list_page(page);
 		
+	function list_page(page){
 		
-		 $.ajax({
+		$.ajax({
 			  type: "POST",
 	    	  url: "/list",
 	 		  dataType: 'Json',
@@ -110,16 +100,25 @@ $(document).ready(function(e) {
 		        	
 		        },
 	    	  success: function(re){
-	    		console.log("리스트를 받아서 ");
-	    		console.log(re);
-	    		console.log($("#showlist"))
-	    		
+	    	
 	    			adlist(re);
 	    		
 	    	  } 
-               
+             
 		 });
 	}
+	
+	
+	$(".a1 ").on("click", function(e){
+ 		e.preventDefault();
+ 		console.log(this.innerText);
+ 		console.dir(this.parentNode);
+ 		$(".a1").parent().removeClass('active');
+ 		$(this.parentNode).addClass('active');
+ 		list_page(this.innerText);
+ 		
+ 		
+ 	});
 	
 })
 

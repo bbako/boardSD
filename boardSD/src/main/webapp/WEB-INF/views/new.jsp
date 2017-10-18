@@ -85,7 +85,7 @@ $(document).ready(function(e) {
            success: function(){
                alert("Á¤¼Û µÊ");  
                
-               location.href = "/board_list.do";
+               location.href = "/list";
 
 
            }
