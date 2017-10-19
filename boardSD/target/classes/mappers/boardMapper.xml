@@ -22,5 +22,15 @@ values(#{board_title},#{board_content},#{board_writer},sysdate(),0)
 select count(*) from s_board 
 </select>
 
+<select id="listSearch" resultType="org.board.domain.BoardVO" parameterType="map">
+	<![CDATA[ select * from s_board where SEQ_ID>0 and board_title like CONCAT('%',#{key},'%')  order by SEQ_ID desc limit 0,10]]>
+
+</select>
+
+<select id="totalSearch" resultType="int" parameterType="String">
+select count(*) from s_board where board_title like CONCAT('%',#{key},'%')
+
+</select>
+
 
 </mapper>

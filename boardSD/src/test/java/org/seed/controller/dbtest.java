@@ -8,7 +8,6 @@ import org.board.domain.BoardVO;
 import org.board.persistence.BoardDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -43,6 +42,24 @@ public class dbtest {
 		}
 		
 		
+		
+		}
+	
+	@Test
+	public void serchTest(){
+		
+		String key = "4";
+		
+			dao.listSearch(key);
+		
+		}
+	
+	@Test
+	public void serchTotalTest(){
+		
+		String key = "4";
+			
+			dao.totalSearch(key);
 		
 		}
 	

@@ -1,12 +1,13 @@
 package org.board.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.board.domain.BoardVO;
-import org.board.domain.Criteria;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -36,6 +37,22 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return sess.selectOne(namespace+".total");
 		
+	}
+
+
+	@Override
+	public List<BoardVO> listSearch(String key) {
+		
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("key", key);
+		 map.put("page", 1);
+		return sess.selectList(namespace+".listSearch", map);
+	}
+
+
+	@Override
+	public int totalSearch(String key) {
+		return sess.selectOne(namespace+".totalSearch", key);
 	}
 
 }

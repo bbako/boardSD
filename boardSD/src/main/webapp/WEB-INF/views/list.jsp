@@ -47,13 +47,21 @@ ${pageMaker}
 		</tbody>
 	</table>
 	
-	<div class="container" >
+	<div>
 
-<ul class="pagination2">
-
-</ul>
-
-</div>
+		<ul class="pagination">
+		
+		</ul>
+	
+	</div>
+	<div>
+    <div class="input-group">
+      <input id="search_i" type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button id="search" class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
 	 <a href="/new" class="btn btn-primary" >±Û¾²±â</a>
 </div>
 
@@ -68,6 +76,7 @@ ${pageMaker}
 $(document).ready(function(e) {
 	
 	var page = 1;
+	var key = "";
 	
 	function adlist(list){
 		 
@@ -87,9 +96,9 @@ $(document).ready(function(e) {
 		 	
 	}
 	
-	init_list(page);
+	init_list(page,key);
 	
-	function init_list(page){
+	function init_list(page, key){
 		
 		console.log("start~~!~!~!~!~")
 		 				
@@ -100,7 +109,8 @@ $(document).ready(function(e) {
 	    	  dataType: 'json',	 	
 	    	  data : {
 	 			 	
-		        	page : page
+		        	page : page,
+		        	key : key,
 		        	
 		        },
 		        
@@ -115,47 +125,86 @@ $(document).ready(function(e) {
 		 });
 	}
 	
+
+	
 	function printPageing(pageMaker){
 		
 		var str = "";
 		
 		if(pageMaker.prev){
 			 
-			 str +="<li style = 'display:inline'; ><a href='"+(pageMaker.start-1)+"'> << </a></li>";
+			 str +="<li ><a href='"+(pageMaker.start-1)+"'> << </a></li>";
 			 
 		 }
 		
 		for(var i=pageMaker.start, len = pageMaker.end; i <= len; i++){
 			
-			var bold = pageMaker.current == i?'font-weight: bold;':'';
+			var bold = pageMaker.current == i?"class='active'":'';
 			
 			console.log(pageMaker);
 			
 			console.log(i);
 			
+			console.log(bold);
+			
 			console.log(pageMaker.current);
 			
-			str += "<li style = 'display:inline;"+bold+"'" +bold+"><a href = '"+i+"'>"+i+"&nbsp"+"</a></li>";
+			str += "<li "+bold+"><a href = '"+i+"'>"+i+"&nbsp"+"</a></li>";
 			
 		}
 		
 		if(pageMaker.next){
 			
-			str +="<li style = 'display:inline' ><a href='"+(pageMaker.end+1)+"'> >> </a></li>";
+			str +="<li ><a href='"+(pageMaker.end+1)+"'> >> </a></li>";
 		}
 		
-		$(".pagination2").html(str);
+		$(".pagination").html(str);
 		
 	}
 	
 	
-	$(".pagination2").on("click","a",function(e){
+	$(".pagination").on("click","a",function(e){
 		
 		e.preventDefault();
 		
 		var page = $(this).attr('href');
 		
-		init_list(page);
+		var key = $("#search_i").val();
+		
+		init_list(page,key);
+		
+	})
+	
+	$("#search").on("click",function(e){
+		
+		e.preventDefault();
+		
+		console.log("search BTN");
+		
+		var what = $("#search_i").val();
+		
+		console.log(what);
+		
+		$.ajax({
+			  type: "POST",
+	    	  url: "/search",
+	    	  dataType: 'json',	 	
+	    	  data : {
+	 			 	
+		        	page : page,
+		        	key : what,
+		        	
+		        },
+		        
+	    	  success: function(re){
+	    		
+	    		adlist(re.list);
+	    		printPageing(re.pageMaker);
+	    		
+	    	  } 
+           
+		 });
+		
 		
 	})
 	
