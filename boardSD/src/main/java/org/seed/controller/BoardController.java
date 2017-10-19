@@ -50,14 +50,7 @@ public class BoardController {
 		
 		System.out.println("main get");
 		
-		System.out.println(cri);
-							
-		List<BoardVO> list = boardService.listAll(1);
-		
-		System.out.println(list.toString());
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("board_list");
-        mv.addObject("list", list);
 		int total=boardService.total();
 		mv.addObject("pageMaker", new PageMaker(cri, total));
 

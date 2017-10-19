@@ -53,8 +53,8 @@ ${pageMaker}
                      <li class="paginate_button" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
                      <c:if test="${pageMaker.prev}"><a class="a1" href="${pageMaker.start-1}">&laquo;</a></c:if></li>
                      <c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" var="pagege">
-                     <a class="a1" href="${pagege}">
-         	<li class="${pageMaker.current ==pagege?'active':''}" aria-controls="dataTables-example" tabindex="0">${pagege}</a></li>
+                     
+         	<li class="${pageMaker.current ==pagege?'active':''}" aria-controls="dataTables-example" tabindex="0"><a class="a1" href="${pagege}">${pagege}</a></li>
          	</c:forEach> 
                      <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next">
                      <c:if test="${pageMaker.next}"><a class="a1" href="${pageMaker.end+1}">&raquo;</a></c:if></li>
@@ -63,6 +63,10 @@ ${pageMaker}
 	
 	 <a href="/new" class="btn btn-primary" >±Û¾²±â</a>
 </div>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(e) {
 	
@@ -95,12 +99,10 @@ $(document).ready(function(e) {
 		 
 	}
 	
-	init_list();
+	init_list(page);
 	
-	function init_list(){
-		 
-		var page = $(".al").innerText;
-		
+	function init_list(page){
+		 				
 		 $.ajax({
 			  type: "POST",
 	    	  url: "/list",
@@ -122,9 +124,19 @@ $(document).ready(function(e) {
 		 });
 	}
 	
-	$(".al").on(click,function(e){
+	$(".a1").on("click",function(e){
 		e.preventDefault();
-		var = 
+		console.log("click page")
+		console.log($(this).attr('href'));
+		
+		var page = $(this).attr('href');
+		
+		init_list(page);
+		
+		$(".a1").parent().removeClass('active');
+	    $(this.parentNode).addClass('active');
+		
+		
 		
 		
 	})

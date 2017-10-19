@@ -6,11 +6,11 @@
   
 <mapper namespace="org.board.persistence.BoardDAO" >
 
+
 <select id="listAll" resultType="org.board.domain.BoardVO" parameterType="int">
 	<![CDATA[ select * from s_board where SEQ_ID>0 order by SEQ_ID desc limit #{page},10]]>
 
 </select>
-
 
 
 <insert id="create" parameterType="org.board.domain.BoardVO">
