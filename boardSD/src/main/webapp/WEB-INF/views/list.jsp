@@ -98,7 +98,8 @@ $(document).ready(function(e) {
 	init_list();
 	
 	function init_list(){
-		
+		 
+		var page = $(".al").innerText;
 		
 		 $.ajax({
 			  type: "POST",
@@ -120,6 +121,13 @@ $(document).ready(function(e) {
                
 		 });
 	}
+	
+	$(".al").on(click,function(e){
+		e.preventDefault();
+		var = 
+		
+		
+	})
 	
 })
 
