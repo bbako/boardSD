@@ -49,15 +49,11 @@ ${pageMaker}
 	
 	<div class="container" >
 
-<ul class="pagination pagination-lg">
+<ul class="pagination2">
 
 </ul>
 
-
-
 </div>
-
-	
 	 <a href="/new" class="btn btn-primary" >글쓰기</a>
 </div>
 
@@ -109,36 +105,15 @@ $(document).ready(function(e) {
 		        },
 		        
 	    	  success: function(re){
-	    		console.log("리스트를 받아서 ");
-	    		console.log(re.list);
-	    		console.log(re.pageMaker);
-	    		console.log($("#showlist"))
 	    		
 	    		adlist(re.list);
 	    		printPageing(re.pageMaker);
 	    		
-	    	
-	    			adlist(re);
 	    		
 	    	  } 
              
 		 });
 	}
-	
-	$(".pagination").on("click","a",function(e){
-		e.preventDefault();
-		console.log("click page")
-		console.log($(this).attr('href'));
-		
-		var page = $(this).attr('href');
-		
-		init_list(page);
-		
-		
-		
-	})
-	
-	
 	
 	function printPageing(pageMaker){
 		
@@ -146,26 +121,47 @@ $(document).ready(function(e) {
 		
 		if(pageMaker.prev){
 			 
-			 str +="<li><a href='"+(pageMaker.start-1)+"'> << </a></li>";
+			 str +="<li style = 'display:inline'; ><a href='"+(pageMaker.start-1)+"'> << </a></li>";
 			 
 		 }
 		
 		for(var i=pageMaker.start, len = pageMaker.end; i <= len; i++){
 			
-			var strClass = pageMaker.current == i?'class=active':'';
+			var bold = pageMaker.current == i?'font-weight: bold;':'';
 			
-			str += "<li" +strClass+"><a href = '"+i+"'>"+i+"</a></li>";
+			console.log(pageMaker);
+			
+			console.log(i);
+			
+			console.log(pageMaker.current);
+			
+			str += "<li style = 'display:inline;"+bold+"'" +bold+"><a href = '"+i+"'>"+i+"&nbsp"+"</a></li>";
 			
 		}
 		
 		if(pageMaker.next){
 			
-			str +="<li><a href='"+(pageMaker.end+1)+"'> >> </a></li>";
+			str +="<li style = 'display:inline' ><a href='"+(pageMaker.end+1)+"'> >> </a></li>";
 		}
 		
-		$(".pagination").html(str);
+		$(".pagination2").html(str);
 		
 	}
+	
+	
+	$(".pagination2").on("click","a",function(e){
+		
+		e.preventDefault();
+		
+		var page = $(this).attr('href');
+		
+		init_list(page);
+		
+	})
+	
+	
+	
+	
 	
 	
 })

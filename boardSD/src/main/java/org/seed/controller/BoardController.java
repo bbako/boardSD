@@ -33,8 +33,12 @@ public class BoardController {
 	
 	@Inject
 	BoardService boardService;
-
+	
+	@GetMapping("/list")
+	public void listGet() {
 		
+		
+	}
 
 		
 	@RequestMapping(value = "list", method = RequestMethod.POST)
