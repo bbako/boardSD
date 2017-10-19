@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -33,68 +34,7 @@ public class BoardController {
 	@Inject
 	BoardService boardService;
 
-	/*@RequestMapping("board_list.do")
-	public ModelAndView board_list(Criteria cri) throws Exception {
 		
-		System.out.println("main get");
-		
-		System.out.println(cri);
-							
-		List<BoardVO> list = boardService.listAll(1);
-		
-		System.out.println(list.toString());
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("board_list");
-        mv.addObject("list", list);
-		int total=boardService.total();
-		mv.addObject("pageMaker", new PageMaker(cri, total));
-
-        return mv; 
-	}*/
-	@GetMapping("/list")
-	public void listPost() {
-		
-		
-	}
-		
-	/*@PostMapping("/list")
-	public ResponseEntity<Map<String, Object>> listget(@RequestParam("page") int page){
-		
-		logger.info("list get");
-		
-		ResponseEntity<Map<String, Object>> entity = null;
-		
-		Criteria cri = new Criteria();
-		
-		 page = 1;
-		
-		cri.setPage(1);
-		
-		PageMaker pageMaker = new PageMaker();
-		
-		pageMaker.setCri(cri);
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		List<BoardVO> list = boardService.listAll(1);
-		
-		map.put("list", list);
-		
-		int total = boardService.total();
-		
-		logger.info(total);
-		
-		pageMaker.setTotal(total);
-		
-		map.put("pageMaker", pageMaker);
-		
-		entity = new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
-		
-		return entity;
-		
-		
-		
-	}*/
 
 		
 	@RequestMapping(value = "list", method = RequestMethod.POST)

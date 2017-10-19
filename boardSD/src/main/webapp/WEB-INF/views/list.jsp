@@ -76,14 +76,8 @@ $(document).ready(function(e) {
 	function adlist(list){
 		 
 		 var str="";
-		
 		 
 		 $.each(list, function(index, value) {
-			 
-			 console.log(value.seq_id);
-			 
-			 console.dir($("#showlist"));
-
 			 
 			 str+='<tr><td class="text-center">'+value.seq_id+'</td>'
 			 		+'<td class="text-center">'+value.board_title+'</td>'
@@ -92,7 +86,6 @@ $(document).ready(function(e) {
 					+'<td class="text-center">'+value.board_viewcounter+'</td></tr>'
 					
 			}); 
-		 
 		 
 		 	$("#showlist").html(str);
 		 	
@@ -104,8 +97,9 @@ $(document).ready(function(e) {
 		
 		console.log("start~~!~!~!~!~")
 		 				
-		 $.ajax({
-			  type: "post",
+		
+		$.ajax({
+			  type: "POST",
 	    	  url: "/list",
 	    	  dataType: 'json',	 	
 	    	  data : {
@@ -123,9 +117,11 @@ $(document).ready(function(e) {
 	    		adlist(re.list);
 	    		printPageing(re.pageMaker);
 	    		
+	    	
+	    			adlist(re);
 	    		
 	    	  } 
-               
+             
 		 });
 	}
 	
@@ -170,6 +166,7 @@ $(document).ready(function(e) {
 		$(".pagination").html(str);
 		
 	}
+	
 	
 })
 
