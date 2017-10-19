@@ -9,7 +9,7 @@ public class PageMaker {
 	private boolean prev, next;
 	Criteria cri;
 	
-	public PageMaker(Criteria cri,int total){
+	public PageMaker(Criteria cri, int total){
 		
 		
 		this.start = start;

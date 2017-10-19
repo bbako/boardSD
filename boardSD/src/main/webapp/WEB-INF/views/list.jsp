@@ -47,26 +47,27 @@ ${pageMaker}
 		</tbody>
 	</table>
 	
-	
- 	 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
-                     <ul class="pagination">
-                     <li class="paginate_button" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
-                     <c:if test="${pageMaker.prev}"><a class="a1" href="${pageMaker.start-1}">&laquo;</a></c:if></li>
-                     <c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" var="pagege">
-                     
-         	<li class="${pageMaker.current ==pagege?'active':''}" aria-controls="dataTables-example" tabindex="0"><a class="a1" href="${pagege}">${pagege}</a></li>
-         	</c:forEach> 
-                     <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next">
-                     <c:if test="${pageMaker.next}"><a class="a1" href="${pageMaker.end+1}">&raquo;</a></c:if></li>
-                     </ul>
-                     </div>
+	<div class="container" >
+
+<ul class="pagination pagination-lg">
+
+</ul>
+
+
+
+</div>
+
 	
 	 <a href="/new" class="btn btn-primary" >글쓰기</a>
 </div>
+
+
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
+  
+  
 <script>
 $(document).ready(function(e) {
 	
@@ -80,6 +81,7 @@ $(document).ready(function(e) {
 		 $.each(list, function(index, value) {
 			 
 			 console.log(value.seq_id);
+			 
 			 console.dir($("#showlist"));
 
 			 
@@ -89,42 +91,45 @@ $(document).ready(function(e) {
 					+'<td class="text-center">'+value.board_datetime+'</td>'
 					+'<td class="text-center">'+value.board_viewcounter+'</td></tr>'
 					
-			 
 			}); 
 		 
 		 
 		 	$("#showlist").html(str);
 		 	
-			 
-		 
 	}
 	
 	init_list(page);
 	
 	function init_list(page){
+		
+		console.log("start~~!~!~!~!~")
 		 				
 		 $.ajax({
-			  type: "POST",
+			  type: "post",
 	    	  url: "/list",
-	 		  dataType: 'Json',
-	 		  data : {
+	    	  dataType: 'json',	 	
+	    	  data : {
 	 			 	
 		        	page : page
 		        	
 		        },
+		        
 	    	  success: function(re){
 	    		console.log("리스트를 받아서 ");
-	    		console.log(re);
+	    		console.log(re.list);
+	    		console.log(re.pageMaker);
 	    		console.log($("#showlist"))
 	    		
-	    			adlist(re);
+	    		adlist(re.list);
+	    		printPageing(re.pageMaker);
+	    		
 	    		
 	    	  } 
                
 		 });
 	}
 	
-	$(".a1").on("click",function(e){
+	$(".pagination").on("click","a",function(e){
 		e.preventDefault();
 		console.log("click page")
 		console.log($(this).attr('href'));
@@ -133,33 +138,37 @@ $(document).ready(function(e) {
 		
 		init_list(page);
 		
-		$(".a1").parent().removeClass('active');
-	    $(this.parentNode).addClass('active');
-		
-		
 		
 		
 	})
 	
-	function printPageing(PageMaker){
+	
+	
+	function printPageing(pageMaker){
 		
 		var str = "";
-		 if(pageMaker.prev){
+		
+		if(pageMaker.prev){
 			 
-			 str +="<li><a href='"+(pageMaker.startPage-1)+"'> << </a></li>";
+			 str +="<li><a href='"+(pageMaker.start-1)+"'> << </a></li>";
 			 
 		 }
-		for(var i=pageMaker.startPAge, len = pageMaker.endPage; i <=len; i++){
+		
+		for(var i=pageMaker.start, len = pageMaker.end; i <= len; i++){
 			
-			var strClass=pageMaker.cri.page == i?'class=active':'';
+			var strClass = pageMaker.current == i?'class=active':'';
+			
 			str += "<li" +strClass+"><a href = '"+i+"'>"+i+"</a></li>";
 			
 		}
+		
 		if(pageMaker.next){
 			
-			str +="<li><a href='"+(pageMaker.endPage+1)+"'> >> </a></li>";
+			str +="<li><a href='"+(pageMaker.end+1)+"'> >> </a></li>";
 		}
-		$('.pagination').html(str);
+		
+		$(".pagination").html(str);
+		
 	}
 	
 })
