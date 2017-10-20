@@ -1,6 +1,8 @@
 package org.board.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -31,8 +33,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> listSearch(String key) {
-		return dao.listSearch(key);
+	public List<BoardVO> listSearch(String key, int page) {
+		
+		return dao.listSearch(key, page);
 	}
 
 	@Override

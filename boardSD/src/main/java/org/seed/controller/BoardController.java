@@ -5,17 +5,19 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.board.domain.BoardVO;
 import org.board.domain.Criteria;
 import org.board.domain.PageMaker;
+import org.board.domain.UserVO;
 import org.board.service.BoardService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,8 +33,11 @@ public class BoardController {
 	BoardService boardService;
 	
 	@GetMapping("/list")
-	public void listGet() {
+	public void listGet(HttpSession session, Model model) {
 		
+		Object vo = session.getAttribute("login");
+		
+		model.addAttribute("login", vo );
 		
 	}
 
@@ -78,7 +83,7 @@ public class BoardController {
 			
 			pageMaker.setCri(cri);
 			
-			List<BoardVO> list = boardService.listSearch(key);
+			List<BoardVO> list = boardService.listSearch(key, page);
 			
 			map.put("list", list);
 			
@@ -91,37 +96,7 @@ public class BoardController {
 		}
 	}
 	
-	@PostMapping("/search")
-	public ResponseEntity<Map<String, Object>> searchPost(@RequestParam("key") String key, @RequestParam("page") int page){
-		
-		logger.info("search post");
-		logger.info(key);
-		
-		ResponseEntity<Map<String, Object>> entity = null;
-		
-		Criteria cri = new Criteria();
-		
-		cri.setPage(page);
-		
-		int total = boardService.totalSearch(key);
-		
-		PageMaker pageMaker = new PageMaker(cri, total);
-		
-		pageMaker.setCri(cri);
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		List<BoardVO> list = boardService.listSearch(key);
-		
-		map.put("list", list);
-		
-		map.put("pageMaker", pageMaker);
-		
-		entity = new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
-		
-		return entity;
-		
-	}
+
 		
 				 
 		

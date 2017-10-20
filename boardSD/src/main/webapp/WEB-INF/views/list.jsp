@@ -12,7 +12,8 @@
   
 </head>
 <body>
-${pageMaker}
+
+
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -20,7 +21,7 @@ ${pageMaker}
 		</div>
 		<ul class="nav navbar-nav">
 			<li><a href="main.do">main</a></li>
-			<li class="active"><a href="board_list.do">Board</a></li>
+			<li class="active"><a href="/list">Board</a></li>
 		</ul>
 	</div>
 </nav>
@@ -28,6 +29,7 @@ ${pageMaker}
 <div class="container" style="margin-top:5%">
 	<div class="jumbotron text-center">
  		<h3>Board List</h3>
+ 		<h1>${login.member_id} 님이 로그인 하셨습니다.</h1>
  	</div>
 </div>
 
@@ -56,13 +58,16 @@ ${pageMaker}
 	</div>
 	<div>
     <div class="input-group">
-      <input id="search_i" type="text" class="form-control" placeholder="Search for...">
+      <input id="search_i" type="text" class="form-control"  placeholder="Search for...">
       <span class="input-group-btn">
         <button id="search" class="btn btn-default" type="button">Go!</button>
       </span>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 	 <a href="/new" class="btn btn-primary" >글쓰기</a>
+	 <a href="/user/login" class="btn btn-primary" >로그인</a>
+	 <a href="/user/logout" class="btn btn-primary" >로그아웃</a>
+	 
 </div>
 
 
@@ -78,7 +83,7 @@ $(document).ready(function(e) {
 	var page = 1;
 	var key = "";
 	
-	function adlist(list){
+	function makeTable(list){
 		 
 		 var str="";
 		 
@@ -116,7 +121,7 @@ $(document).ready(function(e) {
 		        
 	    	  success: function(re){
 	    		
-	    		adlist(re.list);
+	    		makeTable(re.list);
 	    		printPageing(re.pageMaker);
 	    		
 	    		
@@ -187,7 +192,7 @@ $(document).ready(function(e) {
 		
 		$.ajax({
 			  type: "POST",
-	    	  url: "/search",
+	    	  url: "/list",
 	    	  dataType: 'json',	 	
 	    	  data : {
 	 			 	
@@ -198,7 +203,7 @@ $(document).ready(function(e) {
 		        
 	    	  success: function(re){
 	    		
-	    		adlist(re.list);
+	    		makeTable(re.list);
 	    		printPageing(re.pageMaker);
 	    		
 	    	  } 

@@ -30,30 +30,21 @@ public class dbtest {
 		
 		BoardVO vo = new BoardVO();
 		
-		for (int i = 0; i <105; i++) {
+			for (int i = 0; i <105; i++) {
+				
+				vo.setBoard_title("title"+i);
+				vo.setBoard_content("content"+i);
+				vo.setBoard_writer("writer"+i);
+				
 			
-			vo.setBoard_title("title"+i);
-			vo.setBoard_content("content"+i);
-			vo.setBoard_writer("writer"+i);
-			
+				dao.create(vo);
+				
+			}
 		
-			dao.create(vo);
-			
-		}
-		
-		
-		
-		}
-	
-	@Test
-	public void serchTest(){
-		
-		String key = "4";
-		
-			dao.listSearch(key);
 		
 		}
 	
+
 	@Test
 	public void serchTotalTest(){
 		

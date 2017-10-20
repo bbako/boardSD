@@ -20,7 +20,7 @@ ${list}
 		</div>
 		<ul class="nav navbar-nav">
 			<li><a href="main.do">main</a></li>
-			<li class="active"><a href="board_list.do">Board</a></li>
+			<li class="active"><a href="/list">Board</a></li>
 		</ul>
 	</div>
 </nav>

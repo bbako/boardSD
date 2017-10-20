@@ -19,9 +19,9 @@
 	
 	<bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	    <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-	    <property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/test" />
+	    <property name="url" value="jdbc:log4jdbc:mysql://192.168.0.13:3306/education" />
 	    <property name="username" value="root" />
-	    <property name="password" value="1234" />
+	    <property name="password" value="asdfqwer" />
 	</bean>
 
 
@@ -42,6 +42,6 @@
 
 	<context:component-scan base-package="org.board.persistence"></context:component-scan>
 	<context:component-scan base-package="org.board.service"></context:component-scan>	
-		
+	<context:component-scan base-package="org.board.dto"></context:component-scan>
 		
 </beans>

@@ -41,11 +41,11 @@ public class BoardDAOImpl implements BoardDAO {
 
 
 	@Override
-	public List<BoardVO> listSearch(String key) {
+	public List<BoardVO> listSearch(String key, int page) {
 		
 		 Map<String, Object> map = new HashMap<String, Object>();
 		 map.put("key", key);
-		 map.put("page", 1);
+		 map.put("page", page);
 		return sess.selectList(namespace+".listSearch", map);
 	}
 

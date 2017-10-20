@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.board.persistence.LoginDAO" >
+
+<select id="tryLogin" resultType="org.board.domain.UserVO" parameterType="org.board.dto.LoginDTO">
+	select * from s_member where MEMBER_ID = #{user_id} and MEMBER_PW = #{user_pw}
+	
+</select>
+
+</mapper>
