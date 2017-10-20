@@ -28,31 +28,16 @@
                 <input type="text" id="inputID" name="member_id" class="form-control" placeholder="ID" required autofocus>
                 <input type="text" id="inputName" name="member_name" class="form-control" placeholder="NAME" required autofocus>
                 <input type="password"  id="inputPW" name="member_pw" class="form-control" placeholder="Password" required>
-                </div>
-                <button id="signup" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">등록</button>
                 
-            </form><!-- /form -->
+                <button id="signup" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">등록</button>
+            </form>   
+           
              
             
         </div><!-- /card-container -->
     </div><!-- /container -->
     
-<script>
-$(document).ready(function(e) {
-	
-	
-	
-	 
-	
-	
-	
-	
-	
-	
-})
-
-
-</script>    
+ 
 
 </body>
 </html>
