@@ -17,4 +17,9 @@ public class LoginServiceImpl implements LoginService {
 		return dao.tryLogin(dto);
 	}
 
+	@Override
+	public void regist(UserVO vo) {
+		dao.regist(vo);
+	}
+
 }

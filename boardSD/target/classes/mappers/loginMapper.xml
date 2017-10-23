@@ -11,4 +11,8 @@
 	
 </select>
 
+<insert id="regist" parameterType="org.board.domain.UserVO">
+insert into s_member values(#{member_id},#{member_name},#{member_pw})
+</insert>
+
 </mapper>

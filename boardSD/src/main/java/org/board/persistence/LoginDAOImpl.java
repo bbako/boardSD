@@ -18,6 +18,11 @@ public class LoginDAOImpl implements LoginDAO {
 	public UserVO tryLogin(LoginDTO dto) {
 		return sess.selectOne(namespace+".tryLogin", dto);
 	}
+
+	@Override
+	public void regist(UserVO vo) {
+		sess.insert(namespace+".regist", vo);		
+	}
 	
 	
 

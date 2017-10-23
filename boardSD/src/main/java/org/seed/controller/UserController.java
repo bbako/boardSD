@@ -68,6 +68,10 @@ public class UserController {
 	@PostMapping("/signup")
 	public String signupPost(HttpSession session, UserVO userVO) {
 		
+		logger.info(userVO);
+		
+		lser.regist(userVO);
+		
 		session.setAttribute("login", userVO);
 		
 		return "redirect:/list";

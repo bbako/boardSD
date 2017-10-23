@@ -36,22 +36,7 @@
         </div><!-- /card-container -->
     </div><!-- /container -->
     
-<script>
-$(document).ready(function(e) {
-	
-	
-	
-	 
-	
-	
-	
-	
-	
-	
-})
-
-
-</script>    
+ 
 
 </body>
 </html>

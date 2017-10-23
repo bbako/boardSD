@@ -7,5 +7,8 @@ public interface LoginService {
 	
 	public UserVO tryLogin(LoginDTO dto);
 	
+	public void regist(UserVO vo);
+
+	
 
 }

@@ -6,5 +6,7 @@ import org.board.dto.LoginDTO;
 public interface LoginDAO {
 	
 	public UserVO tryLogin(LoginDTO dto);
+	
+	public void regist(UserVO vo);
 
 }

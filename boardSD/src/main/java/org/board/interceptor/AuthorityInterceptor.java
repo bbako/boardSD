@@ -28,10 +28,8 @@ public class AuthorityInterceptor extends HandlerInterceptorAdapter {
 
 		}
 			
-			return true;
-		
+		return true;
 		
 	}
-	
 	
 }
