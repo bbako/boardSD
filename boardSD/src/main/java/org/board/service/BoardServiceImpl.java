@@ -1,10 +1,13 @@
 package org.board.service;
 
 import java.util.List;
+
 import javax.inject.Inject;
+
 import org.board.domain.BoardVO;
 import org.board.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
@@ -44,7 +47,11 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
+	@Transactional
 	public BoardVO showOne(String title) {
+		dao.viewCountUp(title);
+		
+		
 		return dao.showOne(title);
 	}
 

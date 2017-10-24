@@ -13,9 +13,6 @@ public interface BoardDAO {
 	public int totalSearch(String key);
 	public List<BoardVO> serachAuto(String key);
 	public BoardVO showOne(String title);
-
-	
-
-
+	public void viewCountUp(String title);
 
 }

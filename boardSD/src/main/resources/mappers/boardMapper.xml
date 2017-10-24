@@ -36,9 +36,13 @@ select count(*) from s_board where board_title like CONCAT('%',#{key},'%')
 select board_title from s_board where BOARD_TITLE like CONCAT(#{key},'%') group by BOARD_TITLE
 </select>
 
-<select id="showOne">
-select * from s_board where BOARD_TITLE = #{title} 
+<select id="showOne" resultType="org.board.domain.BoardVO">
+select * from s_board where seq_id = #{seq_id} 
 </select>
+
+<update id="viewcountup">
+update s_board set board_viewcounter = board_viewcounter+1 where seq_id=#{seq_id} 
+</update>
 
 
 </mapper>

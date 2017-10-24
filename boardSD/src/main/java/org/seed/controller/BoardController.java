@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -110,9 +109,11 @@ public class BoardController {
 	}
 	
 	@GetMapping("/showOne")
-	public Model showOnePost(@RequestParam("oneTitleShow") String title, Model model) {
+	public Model showOnePost(@RequestParam("oneTitleShow") String seq_id, Model model) {
 		
-		BoardVO oneVO = boardService.showOne(title);
+		logger.info("show one ");
+		
+		BoardVO oneVO = boardService.showOne(seq_id);
 		
 		model.addAttribute("OneVO", oneVO);
 		

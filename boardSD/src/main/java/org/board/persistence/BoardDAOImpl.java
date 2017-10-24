@@ -67,4 +67,10 @@ public class BoardDAOImpl implements BoardDAO {
 		return sess.selectOne(namespace+".showOne", title);
 	}
 
+
+	@Override
+	public void viewCountUp(String title) {
+		sess.update(namespace+".viewcountup",title);
+	}
+
 }

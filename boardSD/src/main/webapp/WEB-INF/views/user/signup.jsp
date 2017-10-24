@@ -28,12 +28,11 @@
                 <input type="text" id="inputID" name="member_id" class="form-control" placeholder="ID" required autofocus>
                 <input type="text" id="inputName" name="member_name" class="form-control" placeholder="NAME" required autofocus>
                 <input type="password"  id="inputPW" name="member_pw" class="form-control" placeholder="Password" required>
+                <input type="text"  id="inputTitle" name="board_title" class="form-control" placeholder="title" >
+                <input type="text"  id="inputContent" name="board_content" class="form-control" placeholder="content" >
                 
                 <button id="signup" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">µî·Ï</button>
             </form>   
-           
-             
-            
         </div><!-- /card-container -->
     </div><!-- /container -->
     

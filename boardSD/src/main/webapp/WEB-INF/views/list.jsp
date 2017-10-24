@@ -78,8 +78,6 @@
 
 </div>
 
-<a href='/showOne'>go</a>
-
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
@@ -99,8 +97,8 @@ $(document).ready(function(e) {
 		 
 		 $.each(list, function(index, value) {
 			 
-			 str+='<tr><td class="text-center">'+value.seq_id+'</td>'
-			 		+'<td class="text-center"><a>'+value.board_title+'</a></td>'
+			 str+='<tr><td class="text-center"><a href="/showOne?oneTitleShow='+value.seq_id+'">'+value.seq_id+'</a></td>'
+			 		+'<td class="text-center">'+value.board_title+'</td>'
 					+'<td class="text-center">'+value.board_writer+'</td>'
 					+'<td class="text-center">'+value.board_datetime+'</td>'
 					+'<td class="text-center">'+value.board_viewcounter+'</td></tr>'
@@ -243,7 +241,7 @@ $(document).ready(function(e) {
 
 					$.each(data,(function(index, item){
 						
-						/* str +="<li><a href="/showOne">"+item.board_title+"</a></li>"; */
+						 str +="<li><a>"+item.board_title+"</a></li>"; 
 					})
 					)
 					
@@ -254,6 +252,12 @@ $(document).ready(function(e) {
 			});
 
 		});
+	
+	$("#ex").on("click","a",function(e){
+		e.preventDefault();
+		$("#search_i").val(this.innerHTML);
+		
+	})
 	
 	
 	

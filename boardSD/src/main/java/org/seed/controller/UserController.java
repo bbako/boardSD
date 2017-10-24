@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.board.domain.BoardVO;
 import org.board.domain.UserVO;
 import org.board.dto.LoginDTO;
 import org.board.service.BoardService;
@@ -15,8 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("/user")
@@ -66,11 +65,11 @@ public class UserController {
 	}
 	
 	@PostMapping("/signup")
-	public String signupPost(HttpSession session, UserVO userVO) {
+	public String signupPost(HttpSession session, UserVO userVO, BoardVO boardVO) {
 		
-		logger.info(userVO);
+		boardVO.setBoard_writer(userVO.getMember_name());
 		
-		lser.regist(userVO);
+		lser.regist(userVO, boardVO);
 		
 		session.setAttribute("login", userVO);
 		
