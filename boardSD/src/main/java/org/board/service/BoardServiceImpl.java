@@ -1,15 +1,10 @@
 package org.board.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.inject.Inject;
-
 import org.board.domain.BoardVO;
 import org.board.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
-
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
@@ -41,6 +36,16 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int totalSearch(String key) {
 		return dao.totalSearch(key);
+	}
+
+	@Override
+	public List<BoardVO> serachAuto(String key) {
+		return dao.serachAuto(key);
+	}
+
+	@Override
+	public BoardVO showOne(String title) {
+		return dao.showOne(title);
 	}
 
 

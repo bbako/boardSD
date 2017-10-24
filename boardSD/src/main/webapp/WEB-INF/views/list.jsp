@@ -17,10 +17,10 @@
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="main.do">SeedIt</a>
+			<a class="navbar-brand" href="/list">SeedIt</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li><a href="main.do">main</a></li>
+			<li><a href="/list">main</a></li>
 			<li class="active"><a href="/list">Board</a></li>
 		</ul>
 	</div>
@@ -70,6 +70,16 @@
 	 
 </div>
 
+<div id="autocomplete">
+
+			<ul id="ex">
+			
+			</ul>
+
+</div>
+
+<a href='/showOne'>go</a>
+
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
@@ -90,7 +100,7 @@ $(document).ready(function(e) {
 		 $.each(list, function(index, value) {
 			 
 			 str+='<tr><td class="text-center">'+value.seq_id+'</td>'
-			 		+'<td class="text-center">'+value.board_title+'</td>'
+			 		+'<td class="text-center"><a>'+value.board_title+'</a></td>'
 					+'<td class="text-center">'+value.board_writer+'</td>'
 					+'<td class="text-center">'+value.board_datetime+'</td>'
 					+'<td class="text-center">'+value.board_viewcounter+'</td></tr>'
@@ -145,14 +155,6 @@ $(document).ready(function(e) {
 		for(var i=pageMaker.start, len = pageMaker.end; i <= len; i++){
 			
 			var bold = pageMaker.current == i?"class='active'":'';
-			
-			console.log(pageMaker);
-			
-			console.log(i);
-			
-			console.log(bold);
-			
-			console.log(pageMaker.current);
 			
 			str += "<li "+bold+"><a href = '"+i+"'>"+i+"&nbsp"+"</a></li>";
 			
@@ -213,7 +215,45 @@ $(document).ready(function(e) {
 		
 	})
 	
-	
+	$("#search_i").keyup(function(){
+
+			var str = $("#search_i").val();
+
+			$("#search_i").val(str.replace(/(^\s+)|(\s+$)/gm, ""));
+
+			$.ajax({
+
+				url:"/search",
+
+				type:"post",
+				
+				dataType : 'json',
+
+				data:{
+
+					keyWord:$("#search_i").val()
+
+				},
+
+				success:function(data){
+					
+					var str = "";
+					
+					console.log(data);
+
+					$.each(data,(function(index, item){
+						
+						/* str +="<li><a href="/showOne">"+item.board_title+"</a></li>"; */
+					})
+					)
+					
+					$("#ex").html(str);
+
+				}
+
+			});
+
+		});
 	
 	
 	

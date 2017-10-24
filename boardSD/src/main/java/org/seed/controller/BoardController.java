@@ -11,16 +11,18 @@ import org.apache.log4j.Logger;
 import org.board.domain.BoardVO;
 import org.board.domain.Criteria;
 import org.board.domain.PageMaker;
-import org.board.domain.UserVO;
 import org.board.service.BoardService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -83,7 +85,7 @@ public class BoardController {
 			
 			pageMaker.setCri(cri);
 			
-			List<BoardVO> list = boardService.listSearch(key, page);
+			List<BoardVO> list = boardService.listSearch(key, (page-1)*10);
 			
 			map.put("list", list);
 			
@@ -96,12 +98,30 @@ public class BoardController {
 		}
 	}
 	
-
+	@PostMapping("/search")
+	@ResponseBody
+	public List<BoardVO> search(@RequestParam("keyWord") String keyWord) {
 		
-				 
+		logger.info(keyWord);
 		
+		List<BoardVO> search = boardService.serachAuto(keyWord);
+		
+		return search;
+	}
+	
+	@GetMapping("/showOne")
+	public Model showOnePost(@RequestParam("oneTitleShow") String title, Model model) {
+		
+		BoardVO oneVO = boardService.showOne(title);
+		
+		model.addAttribute("OneVO", oneVO);
+		
+		return model;
 		
 	}
+
+		
+}
 		
 	
 

@@ -11,6 +11,9 @@ public interface BoardService {
 	public int total();
 	public List<BoardVO> listSearch(String key, int page);
 	public int totalSearch(String key);
+	public List<BoardVO> serachAuto(String key);
+	public BoardVO showOne(String title);
+
 
 
 

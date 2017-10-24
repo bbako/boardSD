@@ -55,4 +55,16 @@ public class BoardDAOImpl implements BoardDAO {
 		return sess.selectOne(namespace+".totalSearch", key);
 	}
 
+
+	@Override
+	public List<BoardVO> serachAuto(String key) {
+		return sess.selectList(namespace+".autoSearch",key);
+	}
+
+
+	@Override
+	public BoardVO showOne(String title) {
+		return sess.selectOne(namespace+".showOne", title);
+	}
+
 }

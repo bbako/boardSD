@@ -18,7 +18,7 @@ insert into s_board(BOARD_TITLE,BOARD_CONTENT,BOARD_WRITER,BOARD_DATETIME,BOARD_
 values(#{board_title},#{board_content},#{board_writer},sysdate(),0)
 </insert>
 
-<select id="total" resultType="int">
+<select id="total" resultType="Integer">
 select count(*) from s_board 
 </select>
 
@@ -30,6 +30,14 @@ select count(*) from s_board
 <select id="totalSearch" resultType="int" parameterType="String">
 select count(*) from s_board where board_title like CONCAT('%',#{key},'%') 
 
+</select>
+
+<select id="autoSearch" resultType="org.board.domain.BoardVO">
+select board_title from s_board where BOARD_TITLE like CONCAT(#{key},'%') group by BOARD_TITLE
+</select>
+
+<select id="showOne">
+select * from s_board where BOARD_TITLE = #{title} 
 </select>
 
 
