@@ -21,7 +21,7 @@ public class SampleAOP {
 	@Before("execution(* org.board.service.LoginService*.*(..))")
     public void logBeforeAllMethods() { 
 		
-		logger.info("!!!!!!!!!!!!!!!!!!!===================================");
+		logger.info("===================================");
 	}
 	
 	@Before("execution(* org.board.service.BoardService*.*(..))")

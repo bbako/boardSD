@@ -41,7 +41,7 @@ select * from s_board where seq_id = #{seq_id}
 </select>
 
 <update id="viewcountup">
-update s_board set board_viewcounter = board_viewcounter+1 where seq_id=#{seq_id} 
+update s_board set board_viewcounter = board_viewcounter+1 where seq_id=#{seq_id}
 </update>
 
 
