@@ -18,12 +18,10 @@ public class SampleAOP {
 	
 	private static final Logger logger = Logger.getLogger(SampleAOP.class);
 
-
 	@Before("execution(* org.board.service.LoginService*.*(..))")
     public void logBeforeAllMethods() { 
 		
 		logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		
 	}
 	
 	@Before("execution(* org.board.service.BoardService*.*(..))")
