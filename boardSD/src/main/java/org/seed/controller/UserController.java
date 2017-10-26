@@ -31,8 +31,6 @@ public class UserController {
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public void newGet(@ModelAttribute("dto") LoginDTO dto) {
-		
-		
 	}
 	
 	@RequestMapping(value="/loginPost", method = RequestMethod.POST) 

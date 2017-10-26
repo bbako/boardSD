@@ -18,14 +18,12 @@ public class AuthorityInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		
 		logger.info("authority pre @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-
 		
 		HttpSession session = request.getSession();
 		
 		if(session.getAttribute("login") == null) {
 			
 			response.sendRedirect("/user/login");
-
 		}
 			
 		return true;
