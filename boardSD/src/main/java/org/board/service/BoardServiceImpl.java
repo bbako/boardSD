@@ -50,8 +50,6 @@ public class BoardServiceImpl implements BoardService {
 	@Transactional
 	public BoardVO showOne(String title) {
 		dao.viewCountUp(title);
-		
-		
 		return dao.showOne(title);
 	}
 

@@ -17,11 +17,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
-		logger.info("interceptor @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		logger.info("interceptor post @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		
 		HttpSession session = request.getSession();
-		ModelMap modelMap = modelAndView.getModelMap();
-		Object userVO = modelMap.get("userVO");
+		Object userVO = modelAndView.getModelMap().get("userVO");
 		
 		if (userVO != null) {
 			logger.info("new login success");
@@ -37,7 +36,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		
 		logger.info("interceptor pre @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-
 		
 		HttpSession session = request.getSession();
 		

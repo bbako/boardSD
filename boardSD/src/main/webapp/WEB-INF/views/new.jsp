@@ -58,6 +58,7 @@
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
+
 <script>
 $(document).ready(function(e) {
 	
@@ -75,24 +76,30 @@ $(document).ready(function(e) {
 		 console.log(writer);
 		 
 		 $.ajax({
-           type: "post",
-           url: "/new",
-           data: { 
-            board_title: title,
-            board_content: content, 
-            board_writer:writer
-			},           
-           success: function(){
-               alert("Á¤¼Û µÊ");  
-               
-               location.href = "/list";
-
-
-           }
-		 
+			type: "post",
+			url: "/new",
+			data:{ 
+			board_title: title,
+			board_content: content, 
+			board_writer:writer
+				},
+			type: "post",
+			url: "/new",
+			data: { 
+			board_title: title,
+			board_content: content, 
+			board_writer:writer
+			},
+			success: function(){
+			alert("Á¤¼Û µÊ");
+			
+			location.href = "/list";
+			}
+		
 		});
 	
 	})
+	
 })
 
 </script>
