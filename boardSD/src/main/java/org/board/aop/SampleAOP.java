@@ -2,7 +2,8 @@ package org.board.aop;
 
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class SampleAOP {
 	
-	private static final Logger logger = Logger.getLogger(SampleAOP.class);
+	private static final Logger logger = LoggerFactory.getLogger(SampleAOP.class);
 
 	@Before("execution(* org.board.service.LoginService*.*(..))")
     public void logBeforeAllMethods() { 

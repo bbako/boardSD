@@ -27,9 +27,10 @@
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" id="inputID" name="user_id" class="form-control" placeholder="ID" required autofocus>
                 <input type="password"  id="inputPW" name="user_pw" class="form-control" placeholder="Password" required>
-                </div>
                 <button id="signin" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-            </form><!-- /form -->
+            </form>
+            
+            <!-- /form -->
              
              <a href="/user/signup" class="btn btn-lg btn-primary btn-block btn-signin"  >Sign up</a>
             

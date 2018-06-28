@@ -7,11 +7,13 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+import org.board.aop.SampleAOP;
 import org.board.domain.BoardVO;
 import org.board.domain.Criteria;
 import org.board.domain.PageMaker;
 import org.board.service.BoardService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,7 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class BoardController {
 	
-	private static final Logger logger = Logger.getLogger(BoardController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SampleAOP.class);
 
 	
 	@Inject

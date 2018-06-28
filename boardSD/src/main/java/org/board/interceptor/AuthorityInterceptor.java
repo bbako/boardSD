@@ -3,15 +3,16 @@ package org.board.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import org.apache.log4j.Logger;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.servlet.ModelAndView;
+import org.board.aop.SampleAOP;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
 
 public class AuthorityInterceptor extends HandlerInterceptorAdapter {
 	
-	private static final Logger logger = Logger.getLogger(AuthorityInterceptor.class);
+	private static final Logger logger = LoggerFactory.getLogger(SampleAOP.class);
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
